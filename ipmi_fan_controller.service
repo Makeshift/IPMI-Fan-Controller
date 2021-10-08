@@ -1,0 +1,14 @@
+[Unit]
+Description=Fan management script via IPMI - Makeshift/ipmi-fan-controller@github
+After=network-online.target network.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+Restart=on-failure
+RestartSec=5
+ExecStart=/bin/bash /opt/IPMI-Fan-Controller/ipmi_fan_controller.sh
+EnvironmentFile=/opt/IPMI-Fan-Controller/config.conf
+
+[Install]
+WantedBy=multi-user.target
