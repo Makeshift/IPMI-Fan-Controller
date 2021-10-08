@@ -24,9 +24,8 @@ DEBUG=${DEBUG:-false}
 # The prefix for the raw command to send via IPMI to control fan speed. $prefix $speed_in_hex
 FAN_CONTROL_COMMAND_PREFIX=${FAN_CONTROL_COMMAND_PREFIX:-"raw 0x30 0x30 0x02 0xff"}
 # The raw command to send via IPMI to control whether or not the fans are manually or automatically controlled. $prefix 0x00 for manual, or $prefix 0x01 for auto
-IPMI_MANUAL_CONTROL_PREFIX=${IPMI_MANUAL_CONTROL_PREFIX:-"raw 0x30 0x30 0x01"}
-IPMI_ENABLE_MANUAL_CONTROL=${IPMI_ENABLE_MANUAL_CONTROL:-"$IPMI_MANUAL_CONTROL_PREFIX 0x00"}
-IPMI_DISABLE_MANUAL_CONTROL=${IPMI_DISABLE_MANUAL_CONTROL:-"$IPMI_MANUAL_CONTROL_PREFIX 0x01"}
+IPMI_ENABLE_MANUAL_CONTROL=${IPMI_ENABLE_MANUAL_CONTROL:-"raw 0x30 0x30 0x01 0x00"}
+IPMI_DISABLE_MANUAL_CONTROL=${IPMI_DISABLE_MANUAL_CONTROL:-"raw 0x30 0x30 0x01 0x01"}
 
 tohex() {
     printf '0x%02x' "$1"
