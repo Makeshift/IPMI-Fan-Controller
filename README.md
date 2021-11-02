@@ -6,8 +6,9 @@ This was designed for an R710 running iDrac6 (which doesn't have fan curve contr
 
 # Installation
 
+I chose to use `/opt` here just becaue it makes the paths in `ipmi_fan_controller.service` simpler. You can clone it to anywhere as long as you update the paths in that file.
+
 ```
-cd /opt
 sudo git clone https://github.com/Makeshift/IPMI-Fan-Controller.git
 sudo chown -R $USER:$USER IPMI-Fan-Controller
 cd IPMI-Fan-Controller
