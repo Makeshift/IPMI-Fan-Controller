@@ -74,7 +74,7 @@ set_fan_speed $START_FAN_SPEED
 CURRENT_FAN_SPEED=$START_FAN_SPEED
 
 while true; do
-    TEMP=$(sensors -u | grep "input" | awk '{print $2}' | cut -d '.' -f1 | sort -nr | head -1)
+    TEMP=$(sensors -u | grep -A 1 "Core" | grep "input" | awk '{print $2}' | cut -d '.' -f1 | sort -nr | head -1)
     FAN_STEP=$FAN_STEP_PERCENT
     if (( TEMP > TARGET_TEMP )); then
         TEMP_DIFF=$(( TEMP - TARGET_TEMP ))
